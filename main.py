@@ -3,6 +3,7 @@
 from colorama import Fore, Style
 from colorama import init
 import datetime
+import shutil
 import sys
 import os
 
@@ -57,11 +58,18 @@ def Organizer(FolderName, Extentions = None):
 	CreateFolderIfNotExist(FolderName)
 	if Extentions != None:
 		FilesBasedOnExts = [File for File in Files if os.path.splitext(File)[1].lower() in Extentions]
-		return MoveFile(FolderName, FilesBasedOnExts)
+		NumOfFilesMoved = MoveFile(FolderName, FilesBasedOnExts)
+		if len(os.listdir(FolderName)) == 0:
+			shutil.rmtree(FolderName)
 
-	else: return MoveFile(FolderName, Files)
+		return NumOfFilesMoved
 
-# Main Logic is here.
+	else:
+		NumOfFilesMoved = MoveFile(FolderName, Files)
+		if len(os.listdir(FolderName)) == 0: shutil.rmtree(FolderName)
+		return NumOfFilesMoved
+
+# Code Logic here.
 LOG.WARN_LOG("Initialized Clear Clutter!")
 TotalFilesMoved = 0
 

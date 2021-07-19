@@ -3,7 +3,7 @@
 title Compile Clear Clutter
 echo Compiling Clear Clutter.
 
-pyinstaller.exe --icon=Icon.ico --noconsole --onefile main.py
+pyinstaller.exe --icon=Icon.ico --onefile main.py
 move dist\main.exe ".\Clear Clutter.exe"
 
 rmdir /s /q dist
