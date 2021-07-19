@@ -6,11 +6,11 @@ import datetime
 import sys
 import os
 
-# Setup Terminal!
+# Setup Terminal.
 os.system('title Clear Clutter')
 if len(sys.argv) > 1: os.chdir(sys.argv[1])
 
-# Initilaze File organizer
+# Initilaze File organizer.
 init(autoreset = True)
 Files = []
 
@@ -53,7 +53,7 @@ def MoveFile(FolderName, FileName):
 
 # This function will Organize everything.
 def Organizer(FolderName, Extentions = None):
-	ListFiles(["main.py"])
+	ListFiles(["main.py", "Clear Clutter.exe"])
 	CreateFolderIfNotExist(FolderName)
 	if Extentions != None:
 		FilesBasedOnExts = [File for File in Files if os.path.splitext(File)[1].lower() in Extentions]
